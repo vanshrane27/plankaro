@@ -15,7 +15,7 @@ const Footer = () => {
               <div className="bg-purple-600 rounded-full p-2">
                 <MapPin className="h-5 w-5 text-white" />
               </div>
-              <span className="text-xl font-bold text-white">EventLocator</span>
+              <span className="text-xl font-bold text-white">PlanKaro</span>
             </Link>
             <p className="text-gray-400 text-sm">
               Discover and promote exciting events in your area with our 
@@ -66,7 +66,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-purple-400" />
-                <span className="text-gray-400">contact@eventlocator.com</span>
+                <span className="text-gray-400">contact@plankaro.com</span>
               </li>
             </ul>
           </div>
@@ -93,7 +93,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="border-t border-gray-800 mt-8 pt-6 text-center text-gray-400 text-sm">
-          <p>&copy; {currentYear} EventLocator. All rights reserved.</p>
+          <p>&copy; {currentYear} PlanKaro. All rights reserved.</p>
         </div>
       </div>
     </footer>

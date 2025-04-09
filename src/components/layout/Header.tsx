@@ -38,7 +38,7 @@ const Header = () => {
             <div className="bg-purple-600 rounded-full p-2">
               <MapPin className="h-5 w-5 text-white" />
             </div>
-            <span className="text-xl font-bold text-purple-600">EventLocator</span>
+            <span className="text-xl font-bold text-purple-600">PlanKaro</span>
           </Link>
 
           {/* Desktop Navigation */}
