@@ -80,7 +80,7 @@ const AddEvent = () => {
     // Use default image if none provided
     const imageUrl = formData.image || "https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80";
     
-    // Create the event object
+    // Create the event object with proper type handling for the price
     const eventData = {
       title: formData.title,
       description: formData.description,
@@ -97,7 +97,8 @@ const AddEvent = () => {
           lng: Math.random() * 20 - 100
         }
       },
-      price: formData.priceType === "free" ? "Free" : Number(formData.price),
+      // Ensure price is either the literal "Free" or a number
+      price: formData.priceType === "free" ? "Free" : Number(formData.price) || 0,
       category: formData.category,
       image: imageUrl,
       hostId: user?.id || "",
