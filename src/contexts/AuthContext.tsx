@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, ReactNode } from "react";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -27,12 +26,26 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const login = async (email: string, password: string) => {
     // Simulate API call
     try {
-      // Mock successful login - in real app would validate with backend
+      // Get the stored user data for this email
+      const storedUserData = localStorage.getItem(`user_data_${email}`);
+      let userName = email.split('@')[0]; // Default name based on email if no stored data
+      let userRole: "host" | "attendee" = "attendee"; // Default role
+      
+      if (storedUserData) {
+        const userData = JSON.parse(storedUserData);
+        userName = userData.name;
+        userRole = userData.role;
+      } else {
+        // Fallback to legacy storage method
+        userRole = localStorage.getItem(`user_role_${email}`) as "host" | "attendee" || "attendee";
+      }
+      
+      // Mock successful login
       const mockUser = {
         id: "user123",
-        name: "John Doe",
+        name: userName,
         email,
-        role: localStorage.getItem(`user_role_${email}`) as "host" | "attendee" || "attendee"
+        role: userRole
       };
       
       setUser(mockUser);
@@ -40,7 +53,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       
       toast({
         title: "Login successful",
-        description: `Welcome back, ${mockUser.name}!`,
+        description: `Welcome back, ${userName}!`,
       });
     } catch (error) {
       console.error("Login error:", error);
@@ -66,11 +79,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       
       setUser(mockUser);
       localStorage.setItem("user", JSON.stringify(mockUser));
+      
+      // Store the user data by email for future logins
+      localStorage.setItem(`user_data_${email}`, JSON.stringify({ name, role }));
+      
+      // Keep legacy storage for backward compatibility
       localStorage.setItem(`user_role_${email}`, role);
       
       toast({
         title: "Registration successful",
-        description: `Welcome to EventLocator, ${name}!`,
+        description: `Welcome to PlanKaro, ${name}!`,
       });
     } catch (error) {
       console.error("Register error:", error);

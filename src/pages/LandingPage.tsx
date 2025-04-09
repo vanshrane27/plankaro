@@ -37,7 +37,7 @@ const LandingPage = () => {
                       </Button>
                     </Link>
                     <Link to="/explore">
-                      <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+                      <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/20">
                         Browse Events
                       </Button>
                     </Link>
@@ -352,12 +352,12 @@ const LandingPage = () => {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to={isAuthenticated ? "/explore" : "/auth"}>
-              <Button size="lg" className="bg-white text-purple-600 hover:bg-purple-50">
+              <Button size="lg" className="bg-white text-purple-600 hover:bg-purple-50 font-semibold">
                 {isAuthenticated ? "Explore Events" : "Sign Up Now"}
               </Button>
             </Link>
             <Link to="/about">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/20 border-2 font-semibold">
                 Learn More
               </Button>
             </Link>
