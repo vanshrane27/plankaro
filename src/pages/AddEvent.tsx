@@ -97,8 +97,8 @@ const AddEvent = () => {
           lng: Math.random() * 20 - 100
         }
       },
-      // Ensure price is either the literal "Free" or a number
-      price: formData.priceType === "free" ? "Free" : Number(formData.price) || 0,
+      // Fixed: Ensure price is either the literal "Free" or a number
+      price: formData.priceType === "free" ? "Free" : Number(formData.price),
       category: formData.category,
       image: imageUrl,
       hostId: user?.id || "",
